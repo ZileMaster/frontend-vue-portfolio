@@ -5,18 +5,20 @@
         <h4 className="card-title text-center mb-4">Sign Up</h4>
         <form>
           <div className="form-group">
-            <label for="name">Name</label>
+            <label for="username">Username</label>
             <input
               type="text"
+              v-model="username"
               className="form-control"
-              id="name"
-              placeholder="Enter your name"
+              id="username"
+              placeholder="Enter your username"
             />
           </div>
           <div className="form-group">
             <label for="email">Email address</label>
             <input
               type="email"
+              v-model="email"
               className="form-control"
               id="email"
               placeholder="Enter email"
@@ -26,6 +28,7 @@
             <label for="password">Password</label>
             <input
               type="password"
+              v-model="password"
               className="form-control"
               id="password"
               placeholder="Password"
@@ -35,12 +38,33 @@
             <label for="password2">Confirm Password</label>
             <input
               type="password"
+              v-model="passwordConfirmation"
               className="form-control"
               id="password2"
               placeholder="Confirm Password"
             />
           </div>
-          <button type="submit" className="btn btn-primary btn-block">
+          <div className="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              v-model="name"
+              className="form-control"
+              id="name"
+              placeholder="Enter your name"
+            />
+            <div className="form-group">
+            <label for="lastName">Last name</label>
+            <input
+              type="text"
+              v-model="lastname"
+              className="form-control"
+              id="lastName"
+              placeholder="Enter your last name"
+            />
+          </div>
+          </div>
+          <button type="submit" className="btn btn-primary btn-block" v-on:click="submitForm">
             Sign Up
           </button>
         </form>
@@ -54,25 +78,25 @@
 
 <script>
 export default {
+  name: "SignUp",
   data() {
     return {
       name: "",
       email: "",
       password: "",
       passwordConfirmation: "",
+      username: "", 
+      lastname: "",
     };
   },
   methods: {
     submitForm() {
-      // Perform form validation and submission here
-      // Example:
+      console.warn("signup", this.name, this.email, this.password);
       if (this.password !== this.passwordConfirmation) {
         alert("Passwords do not match");
         return;
       }
-      // Make an API call to create the user
-      // On success, redirect the user to the login page
-      // On failure, show an error message
+      
     },
   },
 };
