@@ -12,6 +12,7 @@
               className="form-control"
               id="username"
               placeholder="Enter your username"
+              required
             />
           </div>
           <div className="form-group">
@@ -22,6 +23,7 @@
               className="form-control"
               id="email"
               placeholder="Enter email"
+              required
             />
           </div>
           <div className="form-group">
@@ -32,6 +34,7 @@
               className="form-control"
               id="password"
               placeholder="Password"
+              required
             />
           </div>
           <div className="form-group">
@@ -42,6 +45,7 @@
               className="form-control"
               id="password2"
               placeholder="Confirm Password"
+              required
             />
           </div>
           <div className="form-group">
@@ -52,6 +56,7 @@
               className="form-control"
               id="name"
               placeholder="Enter your name"
+              required
             />
             <div className="form-group">
             <label for="lastName">Last name</label>
@@ -61,6 +66,7 @@
               className="form-control"
               id="lastName"
               placeholder="Enter your last name"
+              required
             />
           </div>
           </div>
@@ -77,6 +83,9 @@
 </template>
 
 <script>
+
+import ax from 'axios';
+
 export default {
   name: "SignUp",
   data() {
@@ -90,19 +99,50 @@ export default {
     };
   },
   methods: {
-    submitForm() {
+    async submitForm() {
       console.warn("signup", this.name, this.email, this.password);
       if (this.password !== this.passwordConfirmation) {
         alert("Passwords do not match");
         return;
+      }else if (this.password.length < 8){
+        alert("Password too short");
+        return;
       }
+
+      let result = await ax.post("http://localhost:3000/api/register/users", 
+      {
+        user: {
+          username: this.username, 
+          password: this.password, 
+          first_name: this.name, 
+          last_name: this.lastname, 
+          email: this.email, 
+          admin_id: 3,
+        }
+      });
       
+      console.warn(result);
+      if(result.status == 200)
+      {
+        alert("sign up successful!");
+        localStorage.setItem("user-info", JSON.stringify(result.data));
+        this.$router.push({name: 'dashboard' })
+      }
+      if(result.status == 400){
+        alert("unable to make user!");
+      }
     },
   },
+
+  mounted()
+  {
+    let user = localStorage.getItem('user-info');
+    if (user){
+      this.$router.push({name: 'dashboard' })
+    }
+  }
 };
 </script>
-Note that this is just an example and you will need to adjust it to your
-specific needs and also add some styling.
 
 <style>
 .card {

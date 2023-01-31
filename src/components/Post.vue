@@ -1,9 +1,10 @@
-/* eslint-disable */
 <template>
-  <div class="card mb-3">
+  <div class="mb-3">
     <ul v-for="post in posts" :key="post.id">
-      <li class="card-tittle">{{ post.headline }}</li>
-      <li class="card-text">{{ post.description }}</li>
+      <div @click="goToPost(post.id)" class="byPost card">
+        <li class="card-tittle">{{ post.headline }}</li>
+        <li class="card-text">{{ post.description }}</li>
+      </div>
     </ul>
   </div>
 </template>
@@ -17,6 +18,14 @@ export default {
     return {
       posts: [],
     };
+  },
+  methods: {
+    goToPost(id){
+      axios
+      .get(`${this.endpoint}/${id}`)
+      .then((response) => console.warn(response.data))
+      .catch((error) => console.log(error));
+    }
   },
   mounted() {
     axios
@@ -34,6 +43,8 @@ export default {
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
 .card-tittle {
@@ -44,6 +55,16 @@ export default {
 
 .card-text {
   font-size: 18px;
+}
+
+.byPost {
+  display: block;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.byPost:hover {
+  transform: scale(1.1);
 }
 
 ul {

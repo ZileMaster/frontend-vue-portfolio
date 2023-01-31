@@ -103,27 +103,34 @@ export default {
     async submitForm() {
       console.warn("useris " + this.user + " " + this.password + " " + this.isAdmin.valueOf);
       let url = "";
-      if (this.isAdmin.checked) {
+      if (this.isAdmin) {
         url = "http://localhost:3000/api/login/admins";
       } else {
         url = "http://localhost:3000/api/login/users";
       }
-      const result = await axios
+
+      let result = await axios
         .post(url, {
           user: {
             username: this.user,
             password: this.password,
           }
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
         });
-
+        
         console.warn(result);
+
+        if( result.status == 200){
+          localStorage.setItem("user-info", JSON.stringify(result.data));
+          this.$router.push({name: "dashboard"});
+        }
     },
   },
+  mounted()
+  {
+    let user = localStorage.getItem('user-info');
+    if (user){
+      this.$router.push({name: 'dashboard' })
+    }
+  }
 };
 </script>

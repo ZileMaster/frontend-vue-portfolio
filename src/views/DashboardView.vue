@@ -13,5 +13,12 @@ export default {
   components: {
     DashboardPage,
   },
+  mounted()
+  {
+    let user = localStorage.getItem('user-info');
+    if (!user){
+      this.$router.push({name: 'signup' })
+    }
+  }
 };
 </script>
