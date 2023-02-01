@@ -11,10 +11,10 @@
   <div :style="{ 'margin-left': sidebarWidth }">
     <h1>Personal Blog</h1>
     <router-view />
-  </div>
   <h5 id="footer">
-    Powered by: Vue 3 | Vuex 4 | VueStore | Ruby on Rails | Postgres | Axios
+    Powered by: Vue 3 | Vuex 4 | Ruby on Rails | Postgres | Axios
   </h5>
+  </div>
 </template>
 
 <script>
@@ -38,7 +38,9 @@ export default {
 }
 
 #footer {
+  text-align: center;
   margin-top: 20px;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 50px; /* Height of the footer */

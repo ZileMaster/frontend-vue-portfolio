@@ -23,7 +23,19 @@ export default {
     goToPost(id){
       axios
       .get(`${this.endpoint}/${id}`)
-      .then((response) => console.warn(response.data))
+      .then((response) => {
+        console.warn(response.data.headline);
+        
+        this.$router.push({ 
+          name: "post", 
+          params: {
+            headline: response.data.headline, 
+            description: response.data.description, 
+            likes: response.data.likes, 
+            topic: response.data.topic
+          }
+        });
+      })
       .catch((error) => console.log(error));
     }
   },

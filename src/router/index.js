@@ -6,6 +6,7 @@ import TravelView from "../views/TravelView";
 import PersonalView from "../views/PersonalView";
 import LoginView from "../views/LoginView";
 import SignupView from "../views/SignupView";
+import PostView from "../views/PostView"
 
 const routes = [
   {
@@ -52,6 +53,11 @@ const routes = [
     name: "signup",
     component: SignupView,
   },
+  {
+    path: '/post', 
+    name: "post", 
+    component: PostView,
+  }
 ];
 
 const router = createRouter({

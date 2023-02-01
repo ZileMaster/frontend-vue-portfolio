@@ -12,16 +12,17 @@
     <SideBarLink to="/dashboard" icon="fas fa-columns">Dashboard</SideBarLink>
     <SideBarLink to="/about" icon="fa-solid fa-users">About</SideBarLink>
     <SideBarLink to="/projects" icon="fa-solid fa-code">Projects</SideBarLink>
-    <SideBarLink to="/travels" icon="fa-regular fa-compass"
-      >Travels</SideBarLink
-    >
+    <SideBarLink to="/travels" icon="fa-regular fa-compass">Travels</SideBarLink>
     <SideBarLink to="/personal" icon="fas fa-blog">Personal</SideBarLink>
 
-    <SideBarLink to="/login" icon="fa-solid fa-user" class="bot">
+    <SideBarLink v-if="isAuthenticated" to="/login" icon="fa-solid fa-user" class="bot">
       Login
     </SideBarLink>
-    <SideBarLink to="/signup" icon="fa-solid fa-user-plus" class="bot">
+    <SideBarLink v-if="isAuthenticated" to="/signup" icon="fa-solid fa-user-plus" class="bot">
       SignUp
+    </SideBarLink>
+    <SideBarLink v-if="!isAuthenticated" v-on:click="logout" to="/" icon="fa-solid fa-user-minus" class="bot">
+      Signout
     </SideBarLink>
     <span
       class="collapse-icon"
@@ -42,6 +43,19 @@ export default {
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
+  computed: {
+    isAuthenticated(){
+      return localStorage.getItem("user-info")==null;
+    },
+  },
+  methods: {
+    logout()
+    {
+      localStorage.clear();
+      location.reload();
+
+    }
+  }
 };
 </script>
 

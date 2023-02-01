@@ -126,7 +126,8 @@ export default {
       {
         alert("sign up successful!");
         localStorage.setItem("user-info", JSON.stringify(result.data));
-        this.$router.push({name: 'dashboard' })
+        this.$router.push({name: 'dashboard' });
+        this.location.reload();
       }
       if(result.status == 400){
         alert("unable to make user!");
