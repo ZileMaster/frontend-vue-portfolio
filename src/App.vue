@@ -9,8 +9,10 @@
   </head>
   <Sidebar />
   <div :style="{ 'margin-left': sidebarWidth }">
-    <h1>Personal Blog</h1>
-    <router-view />
+    <div class="container">
+      <h1>Personal Blog</h1>
+      <router-view />
+    </div>
   <h5 id="footer">
     Powered by: Vue 3 | Vuex | Ruby on Rails | Postgres | Axios
   </h5>
@@ -37,26 +39,20 @@ export default {
   color: #2c3e50;
 }
 
+.container {
+  min-height: 100%;
+  overflow: auto;
+  padding-bottom: 100px;
+  height: 110%;
+}
+
 #footer {
-  text-align: center;
-  margin-top: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  height: 50px; /* Height of the footer */
-  background: #6cf;
+  background-color: #2c3e50;
+  color: aliceblue;
+  position: relative; 
+  height: 50px;
+  clear: both;
+  margin-top: 5%;
 }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
