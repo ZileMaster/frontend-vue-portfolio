@@ -101,6 +101,15 @@ import axios from 'axios';
       methods: {
         toggleTable() {
           this.showTable = !this.showTable;
+        }, 
+        deleteUser(id){
+          const config = {
+            headers: { 'Authorization': `Bearer ${this.token}` }
+          };
+
+          axios.delete(`http://localhost:3000/api/users/${id}`, config)
+          .then((response) => console.log(response))
+          .catch((error) => (console.warn(error)));
         }
       },  
   }

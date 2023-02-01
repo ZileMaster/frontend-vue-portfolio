@@ -1,9 +1,12 @@
 <template>
-  <div class="mb-3">
+  <div class="mb-3 container">
     <ul v-for="post in posts" :key="post.id">
       <div @click="goToPost(post.id)" class="byPost card">
-        <li class="card-tittle">{{ post.headline }}</li>
-        <li class="card-text">{{ post.description }}</li>
+        <div class="card__body">
+          <span class="tag tag-red">{{ post.topic }}</span>
+          <h4> {{ post.headline }}</h4>
+          <p>{{ post.description }}</p>
+        </div>
       </div>
     </ul>
   </div>
@@ -21,22 +24,8 @@ export default {
   },
   methods: {
     goToPost(id){
-      axios
-      .get(`${this.endpoint}/${id}`)
-      .then((response) => {
-        console.warn(response.data.headline);
-        
-        this.$router.push({ 
-          name: "post", 
-          params: {
-            headline: response.data.headline, 
-            description: response.data.description, 
-            likes: response.data.likes, 
-            topic: response.data.topic
-          }
-        });
-      })
-      .catch((error) => console.log(error));
+      this.$store.commit('SET_CURRENT_POST_ID', id);
+      this.$router.push({ name: 'post', params: { id } });
     }
   },
   mounted() {
@@ -49,24 +38,67 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
 .card {
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   margin-bottom: 20px;
   transition: transform 0.3s ease-in-out;
+
 }
 
-.card-tittle {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 
-.card-text {
-  font-size: 18px;
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }
 
 .byPost {
@@ -77,10 +109,5 @@ export default {
 
 .byPost:hover {
   transform: scale(1.1);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
 }
 </style>

@@ -1,9 +1,15 @@
 import { createStore } from "vuex";
 
 export default createStore({
-  state: {},
+  state: {
+    currentPostId: null
+  },
   getters: {},
-  mutations: {},
+  mutations: {
+    SET_CURRENT_POST_ID(state, id) {
+      state.currentPostId = id;
+    }
+  },
   actions: {},
   modules: {},
 });

@@ -1,4 +1,5 @@
 <template>
+  
   <div class-name="container">
     <h3>Home page!</h3>
     <NoticeBoard endpoint="http://localhost:3000/api/notice_boards/1/infos" />
@@ -20,4 +21,5 @@ body {
   line-height: 1.6;
   background-color: #e8e8e8;
 }
+
 </style>
