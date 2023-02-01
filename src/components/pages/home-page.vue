@@ -1,5 +1,4 @@
 <template>
-  
   <div class-name="container">
     <h3>Home page!</h3>
     <NoticeBoard endpoint="http://localhost:3000/api/notice_boards/1/infos" />

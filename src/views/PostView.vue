@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <PostPage 
       v-if="post"
       :headline="post.headline" 

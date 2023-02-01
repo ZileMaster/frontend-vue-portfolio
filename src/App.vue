@@ -12,7 +12,7 @@
     <h1>Personal Blog</h1>
     <router-view />
   <h5 id="footer">
-    Powered by: Vue 3 | Vuex 4 | Ruby on Rails | Postgres | Axios
+    Powered by: Vue 3 | Vuex | Ruby on Rails | Postgres | Axios
   </h5>
   </div>
 </template>
