@@ -6,6 +6,7 @@
       :description="post.description" 
       :likes="post.likes" 
       :topic="post.topic"
+      :text="post.text" 
     />
   </div>
 </template>

@@ -9,7 +9,7 @@
           <div class="d-flex justify-content-center">
             <div class="d-flex flex-column">
               <div class="mb-3">
-                <button class=" btn-1">New Post</button>
+                <button class=" btn-1" @click="() => ToggleModal('postTrigger')">New Post</button>
               </div>
               <div class="d-flex">
                 <div class="mb-3 mr-3">
@@ -20,6 +20,11 @@
                 </div>
               </div>
             </div>   
+            <Modal v-if="modalTriggers.postTrigger" :ToggleModal=" () => ToggleModal('postTrigger')">
+              <div class="modal-content">
+                <NewPost />
+              </div>
+            </Modal>
           </div>  
         </div>
         <button @click="toggleTable" class="toggleButton">Toggle Table</button>
@@ -62,7 +67,30 @@
 
 <script>
 import axios from 'axios';
+import NewPost from "../NewPost.vue";
+import Modal from "../Modal.vue";
+import { ref } from "vue";
+
   export default{
+    components: {
+      NewPost, 
+      Modal
+    },
+    setup(){
+      const modalTriggers = ref({
+        postTrigger: false
+      })
+
+      const ToggleModal = (trigger) => {
+        modalTriggers.value[trigger] = !modalTriggers.value[trigger]
+      }
+
+      return {
+        Modal, 
+        modalTriggers, 
+        ToggleModal
+      }
+    },
     data(){
       return{
         name: "", 
@@ -154,7 +182,11 @@ body {
   background-color: #e8e8e8;
 }
 
+.modal-content {
+  display: flex;
+  flex-direction: column;
 
+}
 
 .container {
   max-width: 90%;

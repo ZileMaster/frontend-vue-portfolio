@@ -13,9 +13,6 @@
       <h1>Personal Blog</h1>
       <router-view />
     </div>
-  <h5 id="footer">
-    Powered by: Vue 3 | Vuex | Ruby on Rails | Postgres | Axios
-  </h5>
   </div>
 </template>
 
@@ -44,15 +41,6 @@ export default {
   overflow: auto;
   padding-bottom: 100px;
   height: 110%;
-}
-
-#footer {
-  background-color: #2c3e50;
-  color: aliceblue;
-  position: relative; 
-  height: 50px;
-  clear: both;
-  margin-top: 5%;
 }
 
 </style>

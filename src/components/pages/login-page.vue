@@ -185,7 +185,7 @@ label.form-check-label {
     vertical-align: middle;
 }
 
-body {
+/* body {
   background-color: #e74c3c;
   animation: bg-color 10s infinite;
 }
@@ -196,6 +196,6 @@ body {
   60% { background-color: #3498db; }
   80% { background-color: #9b59b6; }
   100% { background-color: #e74c3c; }
-}
+} */
 
 </style>

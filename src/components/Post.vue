@@ -67,6 +67,7 @@ export default {
   background: #ECE9E6;
   background: linear-gradient(to right, #FFFFFF, #ECE9E6);
   margin-bottom: 20px;
+  margin-top: 10px;
   transition: transform 0.3s ease-in-out;
 
 }

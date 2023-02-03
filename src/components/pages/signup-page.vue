@@ -145,7 +145,7 @@ export default {
 };
 </script>
 
-<style>
+<!-- <style>
 
 body {
   background-color: #e74c3c;
@@ -170,4 +170,4 @@ body {
 .form-group {
   margin-bottom: 1rem;
 }
-</style>
+</style> -->
