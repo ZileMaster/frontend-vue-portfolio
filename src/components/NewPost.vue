@@ -17,14 +17,18 @@
             <option value="personal">Personal</option>
           </select>
         </div>
-        <a>
-            <i class="fa-solid fa-square-check fa-4x icon-success" ></i>
-        </a>
+        <div class="btnSubm glow">
+            <a v-on:click="submitPost" class="glow">
+                <i class="fa-solid fa-square-check fa-4x icon-success glow fa-flip" style="--fa-animation-duration: 3s;"></i>
+            </a>
+        </div>
       </form>
     </div>
   </template>
   
   <script>
+  import axios from 'axios';
+import Axios from 'axios'
   export default {
     data() {
       return {
@@ -33,6 +37,49 @@
         text: "",
         selectedTopic: "travel"
       };
+    }, 
+    methods: {
+        async submitPost(){
+        this.token = JSON.parse(localStorage.getItem("user-info")).token;
+            const config = {
+                headers: { 'Authorization': `Bearer ${this.token}` }
+            };
+        if(this.selectedTopic === "project"){
+            await axios.post("http://localhost:3000/api/project_pages", 
+                {
+                "post":{
+                    "headline": this.headline, 
+                    "description": this.description, 
+                    "text": this.text,
+                    "project_page_id": 2,
+                    "travel_blog_id": 2, 
+                    "personal_blog_id": 2,
+                    "likes": 0, 
+                    "topic": "project"
+                } 
+                }, 
+                config
+            ).then( response => console.log(response)
+            ).catch(error => console.log(error))
+        }
+        else
+            await axios.post(`https://localhost:3000/api/${this.selectedTopic}_blogs`, 
+            {
+                "post":{
+                        "headline": this.headline, 
+                        "description": this.description, 
+                        "text": this.text,
+                        "project_page_id": 2,
+                        "travel_blog_id": 2, 
+                        "personal_blog_id": 2,
+                        "likes": 0, 
+                        "topic": this.selectedTopic
+                    } 
+                }, 
+                config
+            ).then( response => console.log(response)
+            ).catch(error => console.log(error))
+      }
     }
   };
   </script>
@@ -46,6 +93,14 @@
   .cool-input:hover, .cool-input:focus{
 	border-color: #C9C9C9; 
     -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px; 
+  } 
+
+  .btnSubm{
+    margin-top: 10px;
+  }
+
+  .glow:hover{
+	border-color: #C9C9C9; 
   }
 
   .cool-input {
@@ -64,7 +119,7 @@
   #text {
     min-width: 400px;
     width: 70%;
-    min-height: 200px;
+    min-height: 150px;
     height: 50%;
   }
 

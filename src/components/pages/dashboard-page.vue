@@ -13,16 +13,26 @@
               </div>
               <div class="d-flex">
                 <div class="mb-3 mr-3">
-                  <button class="btn btn-2"><b><i> New Notice </i></b></button>
+                  <button class="btn btn-2" @click="() => ToggleModal('noticeTrigger')"><b><i> New Notice </i></b></button>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-3"><b> Update Account </b></button>
+                  <button class="btn btn-3" @click="() => ToggleModal('updateTrigger')"><b> Update Account </b></button>
                 </div>
               </div>
             </div>   
             <Modal v-if="modalTriggers.postTrigger" :ToggleModal=" () => ToggleModal('postTrigger')">
               <div class="modal-content">
                 <NewPost />
+              </div>
+            </Modal>
+            <Modal v-if="modalTriggers.noticeTrigger" :ToggleModal=" () => ToggleModal('noticeTrigger')">
+              <div class="modal-content">
+                <NewNotice />
+              </div>
+            </Modal>
+            <Modal v-if="modalTriggers.updateTrigger" :ToggleModal=" () => ToggleModal('updateTrigger')">
+              <div class="modal-content">
+                <UpdateAdmin />
               </div>
             </Modal>
           </div>  
@@ -70,15 +80,21 @@ import axios from 'axios';
 import NewPost from "../NewPost.vue";
 import Modal from "../Modal.vue";
 import { ref } from "vue";
+import NewNotice from '../newNotice.vue';
+import UpdateAdmin from '../UpdateAdmin.vue'
 
   export default{
     components: {
       NewPost, 
-      Modal
+      Modal, 
+      NewNotice,
+      UpdateAdmin
     },
     setup(){
       const modalTriggers = ref({
-        postTrigger: false
+        postTrigger: false, 
+        noticeTrigger: false,
+        updateTrigger: false
       })
 
       const ToggleModal = (trigger) => {

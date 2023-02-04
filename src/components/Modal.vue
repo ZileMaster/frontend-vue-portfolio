@@ -4,7 +4,7 @@
             <transition name="modal-animation-inner">
                 <div class="popup-inner">
                     <slot />
-                    <button class="popup-close" @click="ToggleModal()">Cancel</button>
+                    <button class="popup-close" @click="ToggleModal()">Close</button>
                 </div>
             </transition>
       </div>
