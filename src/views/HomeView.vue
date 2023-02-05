@@ -15,3 +15,14 @@ export default {
   },
 };
 </script>
+
+<style>
+
+.home{
+  position: relative;
+  width: 110%;
+  height: 110%;
+  margin-left: -15px;
+}
+
+</style>
