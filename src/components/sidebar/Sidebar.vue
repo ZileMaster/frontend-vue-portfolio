@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" :style="{ width: sidebarWidth }">
+  <div class="sidebar bg1" :style="{ width: sidebarWidth }">
     
     <h1>
       <span v-if="collapsed">
@@ -63,8 +63,22 @@ export default {
 <style>
 :root {
   --sidebar-bg-color: #2f855a;
-  --sidebar-item-hover: #38a169;
-  --sidebar-item-active: #276749;
+  --sidebar-item-hover: #0b79a5;
+  --sidebar-item-active: #014381;
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.bg1 {
+  animation: slide 3s ease-in-out infinite alternate;
+  background: linear-gradient(to right, #10442a, #2b8555);
 }
 
 .bot {
@@ -137,7 +151,7 @@ export default {
     transform:translateX(-25%);
   }
   100% {
-    transform:translateX(25%);
+    transform:translateX(60%);
   }
 }
 

@@ -2,11 +2,12 @@
   <div class="home">
     <PostPage 
       v-if="post"
-      :headline="post.headline" 
-      :description="post.description" 
-      :likes="post.likes" 
-      :topic="post.topic"
-      :text="post.text" 
+      :headline="post.post.headline" 
+      :description="post.post.description" 
+      :likes="post.post.likes" 
+      :topic="post.post.topic"
+      :text="post.post.text" 
+      :comments="post.comments"
     />
   </div>
 </template>
@@ -32,7 +33,8 @@ export default {
   },
   mounted(){
     axios.get(`http://localhost:3000/api/posts/${this.id}`)
-    .then(response => (this.post = response.data))
+    .then(response => 
+      (this.post = response.data))
     .catch(error => console.log(error));;
   }
 }

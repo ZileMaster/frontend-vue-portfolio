@@ -46,10 +46,24 @@ export default {
   position: relative;
 }
 
-.appMain{
-  background-color: #2c3e50;
-  z-index: -1;
+.appMain {
+  background: linear-gradient(to right, #6dd5ed, #2c3e50);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   height: max-content;
+  z-index: -1;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 </style>

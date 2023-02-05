@@ -6,7 +6,7 @@
       <p class="profession">{{ profession }}</p>
     </div>
     <div class="right-section" :style="rightSectionStyles">
-      <h2 class="about-me-title">About Me</h2>
+      <h2 class="about-me-title"><i>About Me</i></h2>
       <p class="about-me-text">{{ aboutMe }}</p>
       <div class="button-container">
         <a class="button" href="https://github.com/ZileMaster"><i class="fa-brands fa-github"></i></a>
@@ -52,13 +52,28 @@ export default{
 
 <style>
 .about-me-container {
-  margin-top: 10%;
+  margin-top: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  background-color: #E0E0E0;
+  background: linear-gradient(to right, #e1ff9b, #586437);
+  background-size: 400% 400%;
+  animation: gradientBack 15s ease infinite;
 }
+
+@keyframes gradientBack {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 .left-section {
   text-align: center;
@@ -128,11 +143,15 @@ export default{
   box-shadow: 0 3px 10px rgb(0 0 0 0.2 0.5);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 999px) {
   .about-me-container {
     flex-direction: column;
   }
   
+  .profile-picture{
+    object-fit: contain;
+  }
+
   .left-section, .right-section {
     width: 80%;
     height: 50%;
@@ -170,4 +189,5 @@ export default{
     background-color: #065081;
     color:black;
 }
+
 </style>
