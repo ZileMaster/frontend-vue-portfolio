@@ -47,23 +47,10 @@ export default {
 }
 
 .appMain {
-  background: linear-gradient(to right, #6dd5ed, #2c3e50);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: max-content;
+  background-image: url(./assets/DALL·E\ 2023-02-05\ 23.45.16\ -\ minimalist\ background\ with\ some\ details.png);
+  background-size: cover;
   z-index: -1;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 </style>

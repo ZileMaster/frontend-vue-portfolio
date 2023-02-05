@@ -97,8 +97,8 @@ export default{
 .profile-picture {
   margin-top: 15%;
   border-radius: 15%;
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: 250px;
   object-fit: cover;
   box-shadow: 0 0 50px #ccc;
   transition: all 0.3s ease-in-out;
