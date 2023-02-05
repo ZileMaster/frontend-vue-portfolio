@@ -10,7 +10,6 @@
   <Sidebar />
   <div :style="{ 'margin-left': sidebarWidth }">
     <div class="container">
-      <h1>Personal Blog</h1>
       <router-view />
     </div>
   </div>
@@ -37,9 +36,8 @@ export default {
 }
 
 .container {
-  min-height: 100%;
+  min-height: 90%;
   overflow: auto;
-  padding-bottom: 100px;
   height: 110%;
 }
 

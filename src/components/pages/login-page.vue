@@ -1,4 +1,5 @@
 <template>
+  <div class="preform">
           <form>
               <div class="login-block">
                 <h1>Login</h1>
@@ -45,6 +46,7 @@
                   </button>
                 </div>
             </form>
+  </div>
 </template>
 
 <script>
@@ -96,6 +98,13 @@ export default {
 </script>
 
 <style>
+  .preform{
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    margin: -50px 0 0 -50px;
+  }
+
   .login-block {
     width: 320px;
     padding: 20px;

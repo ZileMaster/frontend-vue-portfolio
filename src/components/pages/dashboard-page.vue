@@ -127,10 +127,12 @@ import UpdateAdmin from '../UpdateAdmin.vue'
         this.name = JSON.parse(localStorage.getItem("user-info")).user.first_name;
         this.lastname = JSON.parse(localStorage.getItem("user-info")).user.last_name;
         this.token = JSON.parse(localStorage.getItem("user-info")).token;
-      }else{
+      }else if(JSON.parse(localStorage.getItem("user-info")).admin != null){
         this.name = JSON.parse(localStorage.getItem("user-info")).admin.first_name;
         this.lastname = JSON.parse(localStorage.getItem("user-info")).admin.last_name;
         this.token = JSON.parse(localStorage.getItem("user-info")).token;
+      }else{
+        this.$router.push('signup');
       }
         
       const config = {

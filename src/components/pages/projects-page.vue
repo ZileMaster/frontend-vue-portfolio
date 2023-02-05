@@ -1,7 +1,9 @@
 <template>
-  <div class-name="container">
-    <h3>projects page!</h3>
-    <Post endpoint="http://localhost:3000/api/project_pages" />
+  <div class="project-page">
+    <div class="container">
+      <h1 class="headline">Project Posts</h1>
+      <Post endpoint="http://localhost:3000/api/project_pages" />
+    </div>
   </div>
 </template>
 
@@ -13,9 +15,23 @@ export default {
 </script>
 
 <style>
-body {
+.container {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   line-height: 1.6;
-  background-color: #e8e8e8;
+  
+}
+
+.headline{
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: aliceblue;
+  color: brown;
+  width: fit-content;
+}
+
+.project-page{
+  background-image: url(../../assets/codecode.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 </style>

@@ -2,10 +2,19 @@
   <div class="mb-3 container">
     <ul v-for="post in posts" :key="post.id">
       <div @click="goToPost(post.id)" class="byPost card">
+        <div v-if="post.topic === 'project'" class="card-header">
+          <img src="../assets/HD-wallpaper-coder-black-logo-minimal-programmer-programming.jpg" alt="rover" />
+        </div>
+        <div v-if="post.topic === 'travel'" class="card-header">
+          <img src="../assets/travelblogphoto.jpg" alt="rover" />
+        </div>
+        <div v-if="post.topic === 'personal'" class="card-header">
+          <img src="../assets/blogphoto.jpg" alt="rover" />
+        </div>
         <div class="card__body">
-          <span class="tag tag-red">{{ post.topic }}</span>
           <h4> {{ post.headline }}</h4>
           <p>{{ post.description }}</p>
+          <span class="tag tag-red">{{ post.topic }}</span>
         </div>
       </div>
     </ul>
@@ -38,14 +47,25 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
- 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body{
+  font-family: "Roboto", sans-serif;
+  color: #10182f;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+.card-header img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 .container {
@@ -110,5 +130,9 @@ background: linear-gradient(to bottom, #ef473a, #cb2d3e);
 
 .byPost:hover {
   transform: scale(1.1);
+}
+
+ul{
+  margin-top: 20px;
 }
 </style>

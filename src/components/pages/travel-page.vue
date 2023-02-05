@@ -1,7 +1,11 @@
 <template>
-  <div class-name="container">
-    <h3>travel page!</h3>
-    <Post endpoint="http://localhost:3000/api/travel_blogs" />
+  <div class="travel-page">
+    <div class-name="container">
+      <div class="theHead">
+        <h1 class="headline">Travel Posts</h1>
+      </div>
+      <Post endpoint="http://localhost:3000/api/travel_blogs" />
+    </div>
   </div>
 </template>
 
@@ -13,9 +17,29 @@ export default {
 </script>
 
 <style>
-body {
+.container {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   line-height: 1.6;
-  background-color: #e8e8e8;
+  
+}
+
+.theHead{
+  padding-top: 15px;  
+  padding-left: 15px;
+}
+
+.headline{
+  margin-top: 15px;
+  border-radius: 15px;
+  background-color: aliceblue;
+  color: brown;
+  width: fit-content;
+}
+
+.travel-page{
+  background-image: url(../../assets/DSC_9759.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100%;
 }
 </style>
