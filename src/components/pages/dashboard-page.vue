@@ -69,7 +69,30 @@
           </div>  
         </div>
       <div v-if="!isAdmin" >
-        These are user info
+        <div>
+          <p><b>What would you like to do now?</b></p> 
+          <div class="d-flex justify-content-center">
+            <div class="d-flex flex-column">
+              <div class="d-flex">
+                <div class="mb-3 mr-3">
+                  <button class="btn btn-2" @click="deleteAccount"><b><i> Delete the account </i></b></button>
+                </div>
+                <div class="mb-3">
+                  <button class="btn btn-3" @click="() => ToggleModal('updateUserTrigger')"><b> Update Account </b></button>
+                </div>
+              </div>
+            </div>   
+            <Modal v-if="modalTriggers.updateUserTrigger" :ToggleModal=" () => ToggleModal('updateUserTrigger')">
+              <div class="modal-content">
+                <UpdateUser />
+              </div>
+            </Modal>
+          </div>  
+        </div>
+        <button @click="toggleComments" class="toggleButton">Toggle All comments</button>
+        <div v-if="showComments">
+          <p>comments showing</p>
+        </div>
       </div>
     </div>
   </div>
@@ -82,19 +105,24 @@ import Modal from "../Modal.vue";
 import { ref } from "vue";
 import NewNotice from '../newNotice.vue';
 import UpdateAdmin from '../UpdateAdmin.vue'
+import UpdateUser from '../UpdateUser.vue';
+import CommentSection from '../CommentSection.vue';
 
   export default{
     components: {
       NewPost, 
       Modal, 
       NewNotice,
-      UpdateAdmin
+      UpdateAdmin, 
+      UpdateUser, 
+      CommentSection,
     },
     setup(){
       const modalTriggers = ref({
         postTrigger: false, 
         noticeTrigger: false,
-        updateTrigger: false
+        updateTrigger: false, 
+        updateUserTrigger:false
       })
 
       const ToggleModal = (trigger) => {
@@ -114,6 +142,8 @@ import UpdateAdmin from '../UpdateAdmin.vue'
         token: "",
         users: [],
         showTable: false,
+        showComments: false, 
+        CommentSection
       };
     },
     computed: {
@@ -148,6 +178,9 @@ import UpdateAdmin from '../UpdateAdmin.vue'
         toggleTable() {
           this.showTable = !this.showTable;
         }, 
+        toggleComments() {
+          this.showComments = !this.showComments;
+        },
         deleteUser(id){
           const config = {
             headers: { 'Authorization': `Bearer ${this.token}` }
@@ -162,6 +195,15 @@ import UpdateAdmin from '../UpdateAdmin.vue'
 </script>
 
 <style>
+
+.welcome{
+    box-shadow: 0 0 5px 1px lightgrey;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: antiquewhite;
+    text-align: left;
+    padding-inline: 40px;
+}
 
 .toggleButton{
   background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
