@@ -107,6 +107,7 @@ export default {
   transition: 0.3s ease;
   display: flex;
   flex-direction: column;
+  height: 100%
 }
 .sidebar h1 {
   height: 2.5em;

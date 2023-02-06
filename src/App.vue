@@ -41,7 +41,7 @@ export default {
 .container {
   min-height: 650px;
   overflow: hidden;
-  height: 110%;
+  height: 100%;
   margin-right: -15px;
   position: relative;
 }
@@ -50,6 +50,12 @@ export default {
   background-image: url(./assets/DALL·E\ 2023-02-05\ 23.45.16\ -\ minimalist\ background\ with\ some\ details.png);
   background-size: cover;
   z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
 }
 
 
