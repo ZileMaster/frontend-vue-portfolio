@@ -109,7 +109,7 @@ export default {
         return;
       }
 
-      let result = await ax.post("http://localhost:3000/api/register/users", 
+      let result = await ax.post("https://frozen-lowlands-12731.herokuapp.com/register/users", 
       {
         user: {
           username: this.username, 

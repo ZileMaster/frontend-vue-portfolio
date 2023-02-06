@@ -2,7 +2,7 @@
   <div class="project-page">
     <div class="container">
       <h1 class="headline">Project Posts</h1>
-      <Post endpoint="http://localhost:3000/api/project_pages" />
+      <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/project_pages" />
     </div>
   </div>
 </template>
