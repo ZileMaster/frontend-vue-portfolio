@@ -46,7 +46,7 @@
         async getUsername(user_id){
             if (!this.usernames[user_id]) {
             await axios
-          .get(`http://localhost:3000/api/user/${user_id}`)
+          .get(`https://frozen-lowlands-12731.herokuapp.com/api/user/${user_id}`)
           .then((response) => {
             this.usernames[user_id] = response.data.user.username;
           })

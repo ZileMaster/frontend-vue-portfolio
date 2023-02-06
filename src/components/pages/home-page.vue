@@ -1,7 +1,7 @@
 <template>
   <div class-name="container">
     <h3>Home page!</h3>
-    <NoticeBoard endpoint="http://localhost:3000/api/notice_boards/1/infos" />
+    <NoticeBoard endpoint="https://frozen-lowlands-12731.herokuapp.com/api/notice_boards/1/infos" />
   </div>
 </template>
 

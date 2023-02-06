@@ -66,9 +66,9 @@ export default {
       console.warn("useris " + this.user + " " + this.password + " " + this.isAdmin.valueOf);
       let url = "";
       if (this.isAdmin) {
-        url = "http://localhost:3000/api/login/admins";
+        url = "https://frozen-lowlands-12731.herokuapp.com/api/login/admins";
       } else {
-        url = "http://localhost:3000/api/login/users";
+        url = "https://frozen-lowlands-12731.herokuapp.com/api/login/users";
       }
 
       let result = await axios

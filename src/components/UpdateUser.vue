@@ -55,7 +55,7 @@
                 headers: { 'Authorization': `Bearer ${this.token}` }
             };
 
-            await axios.put(`http://localhost:3000/api/users/${this.id}`, 
+            await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/users/${this.id}`, 
                 {
                     "user": {
                         "username": this.username, 

@@ -32,7 +32,7 @@ export default {
     PostPage,
   },
   mounted(){
-    axios.get(`http://localhost:3000/api/posts/${this.id}`)
+    axios.get(`https://frozen-lowlands-12731.herokuapp.com/api/posts/${this.id}`)
     .then(response => 
       (this.post = response.data))
     .catch(error => console.log(error));;

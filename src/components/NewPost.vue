@@ -45,7 +45,7 @@ import Axios from 'axios'
                 headers: { 'Authorization': `Bearer ${this.token}` }
             };
         if(this.selectedTopic === "project"){
-            await axios.post("http://localhost:3000/api/project_pages", 
+            await axios.post("https://frozen-lowlands-12731.herokuapp.com/api/project_pages", 
                 {
                 "post":{
                     "headline": this.headline, 
@@ -63,7 +63,7 @@ import Axios from 'axios'
             ).catch(error => console.log(error))
         }
         else
-            await axios.post(`https://localhost:3000/api/${this.selectedTopic}_blogs`, 
+            await axios.post(`https://frozen-lowlands-12731.herokuapp.com/api/${this.selectedTopic}_blogs`, 
             {
                 "post":{
                         "headline": this.headline, 

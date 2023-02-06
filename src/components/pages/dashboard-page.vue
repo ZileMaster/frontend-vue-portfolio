@@ -170,7 +170,7 @@ import CommentSection from '../CommentSection.vue';
       };
 
       axios 
-        .get("http://localhost:3000/api/users", config)
+        .get("https://frozen-lowlands-12731.herokuapp.com/api/users", config)
         .then((response) => (this.users = response.data))
         .catch((error) => { console.error(error) });
       }, 
@@ -186,7 +186,7 @@ import CommentSection from '../CommentSection.vue';
             headers: { 'Authorization': `Bearer ${this.token}` }
           };
 
-          axios.delete(`http://localhost:3000/api/users/${id}`, config)
+          axios.delete(`https://frozen-lowlands-12731.herokuapp.com/api/users/${id}`, config)
           .then((response) => console.log(response))
           .catch((error) => (console.warn(error)));
         }

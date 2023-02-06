@@ -4,7 +4,7 @@
     <div class="theHead">
       <h1 class="headline">Personal Posts</h1>
     </div>
-    <Post endpoint="http://localhost:3000/api/personal_blogs" />
+    <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/personal_blogs" />
   </div>
   </div>
 </template>

@@ -4,7 +4,7 @@
       <div class="theHead">
         <h1 class="headline">Travel Posts</h1>
       </div>
-      <Post endpoint="http://localhost:3000/api/travel_blogs" />
+      <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/travel_blogs" />
     </div>
   </div>
 </template>

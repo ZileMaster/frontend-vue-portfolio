@@ -33,7 +33,7 @@ import axios from 'axios';
                 headers: { 'Authorization': `Bearer ${this.token}` }
             };
 
-        await axios.post("http://localhost:3000/api/admins/3/notice_boards/1/infos", 
+        await axios.post("https://frozen-lowlands-12731.herokuapp.com/api/admins/2/notice_boards/1/infos", 
             {
               "info":{
                 "notice_board_id": 1, 
