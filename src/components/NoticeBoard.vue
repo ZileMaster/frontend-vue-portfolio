@@ -1,5 +1,5 @@
 <template>
-    <div class-name="container mb-3">
+    <div class-name="container mb-3 all-notices">
         <ul v-for="info in notices" :key="info.id" id="notice-board">
             <li class="notice-header"> {{ info.head }} </li>
             <li class="notice-description"> {{ info.description }} </li>
@@ -56,5 +56,11 @@
     color: gray;
     line-height: 1.5;
   }
+
+  .all-notices{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   </style>
   

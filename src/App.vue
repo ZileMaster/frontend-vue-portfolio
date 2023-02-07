@@ -8,7 +8,12 @@
     />
   </head>
   <div class="appMain">
-    <Sidebar />
+    <template v-if="innerWidth < 750">
+      <Navbar />
+    </template>
+    <template v-else>
+      <Sidebar />
+    </template>
       <div :style="{ marginLeft: sidebarWidth }">
         <div class="container">
           <router-view />
@@ -21,13 +26,23 @@
 import Sidebar from "@/components/sidebar/Sidebar.vue";
 import { sidebarWidth } from "./components/sidebar/state";
 import Navbar from "./components/navbar/Navbar.vue";
+import { ref } from 'vue';
+import { onMounted } from "vue";
 
 export default {
   components: { Sidebar, Navbar },
   setup() {
-    return { sidebarWidth : window.innerWidth < 950 ? 38 : sidebarWidth };
+    const innerWidth = ref(window.innerWidth);
+    onMounted(() => {
+      window.addEventListener("resize", () => {
+        innerWidth.value = window.innerWidth;
+      });
+    });
+    return {
+      innerWidth,
+      sidebarWidth: window.innerWidth < 750 ? 0 : sidebarWidth,
+    };
   },
-  
 };
 </script>
 
@@ -39,33 +54,20 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: aliceblue;
+  background-size: 100vh 100vw;
 }
 
 .container {
-  min-height: 650px;
   overflow: hidden;
-  height: 100%;
-  margin-right: -15px;
-  position: relative;
 }
 
 .appMain {
-  background-image: url(./assets/DALL·E\ 2023-02-05\ 23.45.16\ -\ minimalist\ background\ with\ some\ details.png);
-  background-size: auto;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;  
 }
 
-.with-margin {
-  margin-left: 180px;
-}
-
-@media (max-width: 950px) {
+@media (max-width: 750px) {
   .with-margin {
-    margin-left: 38px;
+    margin-left: 0;
   }
 }
 
