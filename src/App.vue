@@ -9,7 +9,7 @@
   </head>
   <div class="appMain">
     <Sidebar />
-      <div :style="{ 'margin-left': sidebarWidth }">
+      <div :style="{ marginLeft: sidebarWidth }">
         <div class="container">
           <router-view />
         </div>
@@ -20,16 +20,19 @@
 <script>
 import Sidebar from "@/components/sidebar/Sidebar.vue";
 import { sidebarWidth } from "./components/sidebar/state";
+import Navbar from "./components/navbar/Navbar.vue";
+
 export default {
-  components: { Sidebar },
+  components: { Sidebar, Navbar },
   setup() {
-    return { sidebarWidth };
+    return { sidebarWidth : window.innerWidth < 950 ? 38 : sidebarWidth };
   },
+  
 };
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 #app {
   font-family: "Roboto", sans-serif;
@@ -48,15 +51,22 @@ export default {
 
 .appMain {
   background-image: url(./assets/DALL·E\ 2023-02-05\ 23.45.16\ -\ minimalist\ background\ with\ some\ details.png);
-  background-size: cover;
+  background-size: auto;
   z-index: -1;
-  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  
+  right: 0;  
 }
 
+.with-margin {
+  margin-left: 180px;
+}
+
+@media (max-width: 950px) {
+  .with-margin {
+    margin-left: 38px;
+  }
+}
 
 </style>

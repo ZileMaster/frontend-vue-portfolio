@@ -146,7 +146,7 @@ export default {
 .bg3 {
   animation-duration:5s;
 }
-
+/* 
 @keyframes slide {
   0% {
     transform:translateX(-25%);
@@ -154,6 +154,6 @@ export default {
   100% {
     transform:translateX(60%);
   }
-}
+} */
 
 </style>

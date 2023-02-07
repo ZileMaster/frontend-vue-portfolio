@@ -111,7 +111,7 @@ export default {
         return;
       }
 
-      let result = await ax.post("https://frozen-lowlands-12731.herokuapp.com/register/users", 
+      let result = await ax.post("https://frozen-lowlands-12731.herokuapp.com/api/register/users", 
       {
         user: {
           username: this.username, 
@@ -119,7 +119,7 @@ export default {
           first_name: this.name, 
           last_name: this.lastname, 
           email: this.email, 
-          admin_id: 3,
+          admin_id: 2,
         }
       });
       

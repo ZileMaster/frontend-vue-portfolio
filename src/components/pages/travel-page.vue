@@ -1,6 +1,6 @@
 <template>
   <div class="travel-page">
-    <div class-name="container">
+    <div class="container">
       <div class="theHead">
         <h1 class="headline">Travel Posts</h1>
       </div>
