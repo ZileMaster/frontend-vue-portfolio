@@ -25,5 +25,7 @@ export default {
   background-image: url(../assets/codecode2.png);
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
 }
 </style>

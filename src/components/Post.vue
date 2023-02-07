@@ -3,7 +3,7 @@
     <ul v-for="post in posts" :key="post.id">
       <div @click="goToPost(post.id)" class="byPost card">
         <div v-if="post.topic === 'project'" class="card-header">
-          <img src="../assets/HD-wallpaper-coder-black-logo-minimal-programmer-programming.jpg" alt="rover" />
+          <img src="../assets/codecode.jpg" alt="rover" />
         </div>
         <div v-if="post.topic === 'travel'" class="card-header">
           <img src="../assets/travelblogphoto.jpg" alt="rover" />
