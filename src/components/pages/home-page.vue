@@ -9,8 +9,13 @@ import NoticeBoard from "../NoticeBoard.vue";
 
 export default{
   components: {  NoticeBoard  },
+  mounted(){ 
+    if (!localStorage.getItem("visited")){
+      alert("Please have understanding that this site is still not the endproduct and it is limited, over time it will be getting more and more stuff. Thank you for your attention!");
+      localStorage.setItem("visited", true);
+    }
+  }
 };
-
 </script>
 
 <style>
