@@ -86,10 +86,12 @@ export default {
 <style>
 
 form{
-  margin-top: 20%;
+  margin-bottom: 10%;
 }
   .preform{
+    margin-top: -10%;
     justify-content: center;
+    margin-bottom: 10%;
     height: 83vh;
   }
 
