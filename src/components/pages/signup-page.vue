@@ -1,87 +1,23 @@
 <template>
-  <div className="d-flex align-items-center justify-content-center h-100">
-    <div className="card w-50">
-      <div class="plswork">
-        <div className="card-body">
-          <h4 className="card-title text-center mb-4">Sign Up</h4>
+    <div className="preform">
           <form>
-            <div className="form-group">
-              <label for="username">Username</label>
-              <input
-                type="text"
-                v-model="username"
-                className="form-control"
-                id="username"
-                placeholder="Enter your username"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label for="email">Email address</label>
-              <input
-                type="email"
-                v-model="email"
-                className="form-control"
-                id="email"
-                placeholder="Enter email"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label for="password">Password</label>
-              <input
-                type="password"
-                v-model="password"
-                className="form-control"
-                id="password"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label for="password2">Confirm Password</label>
-              <input
-                type="password"
-                v-model="passwordConfirmation"
-                className="form-control"
-                id="password2"
-                placeholder="Confirm Password"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                v-model="name"
-                className="form-control"
-                id="name"
-                placeholder="Enter your name"
-                required
-              />
-              <div className="form-group">
-              <label for="lastName">Last name</label>
-              <input
-                type="text"
-                v-model="lastname"
-                className="form-control"
-                id="lastName"
-                placeholder="Enter your last name"
-                required
-              />
-            </div>
-            </div>
-            <button type="submit" className="btn btn-primary btn-block" v-on:click="submitForm">
+             <div class="signup-block">
+              <h2 class="text-center mb-4">Sign Up</h2>
+              <input type="text" v-model="username" id="username" placeholder="Username" required />
+              <input type="email" v-model="email" id="email" placeholder="Email" required/>
+              <input type="password" v-model="password" id="password" placeholder="Password" required />
+              <input type="password" v-model="passwordConfirmation" id="password2" placeholder="Confirm Password" required />
+              <input type="text" v-model="name" id="name" placeholder="First Name" required />
+              <input type="text" v-model="lastname" id="lastName" placeholder="Last name" required />
+            <button type="submit" v-on:click="submitForm">
               Sign Up
             </button>
+            </div>
           </form>
           <div className="text-center mt-4">
             Already have an account? <router-link to="/login">Login</router-link>
           </div>
-        </div>
-      </div>  
-    </div>
-  </div>
+    </div> 
 </template>
 
 <script>
@@ -149,32 +85,103 @@ export default {
 
 <style>
 
-/* body {
-  background-color: #e74c3c;
-  animation: bg-color 10s infinite;
+form{
+  margin-top: 20%;
 }
-@keyframes bg-color {
-  0% { background-color: #e74c3c; }
-  20% { background-color: #f1c40f; }
-  40% { background-color: #1abc9c; }
-  60% { background-color: #3498db; }
-  80% { background-color: #9b59b6; }
-  100% { background-color: #e74c3c; }
-} */
+  .preform{
+    justify-content: center;
+    height: 83vh;
+  }
 
-.plswork{
-  min-width: 250px;
+  .signup-block {
+    width: 70%;
+    max-width: 600px;
+    min-width: 250px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.signup-block h2 {
+    text-align: center;
+    color: #000;
+    font-size: 35px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
-.card-body {
-  display: flex;
-  flex-direction: column;
-  min-width: 250px;
+
+.signup-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
 }
-.form-group {
-  margin-bottom: 1rem;
+
+.signup-block input#username, input#name, input#lastName, input#email {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;
+    background-size: 16px 80px;
 }
+
+.signup-block input#username, input#name, input#lastName, input#email, input#password, input#password2 :focus {
+    background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input#password, input#password2 {
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input#password, input#password2 :focus{
+    background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
+}
+
+.signup-block input:active, .signup-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.signup-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
+}
+
+.signup-block button:hover {
+    background: #ff7b81;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+label.form-check-label {
+    font-size: 14px;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
 </style> 

@@ -53,8 +53,7 @@ export default {
     logout()
     {
       localStorage.clear();
-      location.reload();
-
+      this.$router.push({name: "home"});
     }
   }
 };

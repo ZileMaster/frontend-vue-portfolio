@@ -3,45 +3,21 @@
           <form>
               <div class="login-block">
                 <h1>Login</h1>
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    v-model="user"
-                    required
-                  />
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="Password"
-                    v-model="password"
-                    required
-                  />
+                  <input type="text" placeholder="Username" v-model="user" required />
+                  <input type="password"  id="password" placeholder="Password"  v-model="password" required/>
                   <div>
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="isAdmin"
-                      v-model="isAdmin"
-                    />
+                    <input type="checkbox" className="form-check-input" id="isAdmin" v-model="isAdmin" />
                     <label className="form-check-label" for="isAdmin">
                       Are you admin?
                     </label>
                   </div>
                   <div>
-                    <input
-                      type="checkbox"
-                      className="form-check-input"
-                      id="remember"
-                      v-model="rememberMe"
-                    />
+                    <input type="checkbox" className="form-check-input" id="remember" v-model="rememberMe" />
                     <label className="form-check-label" for="remember">
                       Remember Me
                     </label>
                   </div>
-                  <button
-                    type="submit"
-                    @click="submitForm"
-                  >
+                  <button type="submit" @click="submitForm" >
                     Login
                   </button>
                 </div>
@@ -77,13 +53,17 @@ export default {
             username: this.user,
             password: this.password,
           }
-        });
+        }).catch((error) => {
+          alert("Username or password wrong!");
+          location.reload();
+        })
         
-        console.warn(result);
-
         if( result.status == 200){
           localStorage.setItem("user-info", JSON.stringify(result.data));
           this.$router.push({name: "dashboard"});
+        }
+        else{
+          alert("Something went wrong.");
         }
     },
   },
@@ -98,15 +78,19 @@ export default {
 </script>
 
 <style>
+
+form{
+  margin-top: 20%;
+}
   .preform{
-    position: fixed;
-    top: 30%;
-    left: 50%;
-    margin: -50px 0 0 -50px;
+    justify-content: center;
+    height: 83vh;
   }
 
   .login-block {
-    width: 320px;
+    min-width: fit-content;
+    width: 70%;
+    max-width: 500px;
     padding: 20px;
     background: #fff;
     border-radius: 5px;
@@ -118,7 +102,7 @@ export default {
 .login-block h1 {
     text-align: center;
     color: #000;
-    font-size: 18px;
+    font-size: 30px;
     text-transform: uppercase;
     margin-top: 0;
     margin-bottom: 20px;
@@ -193,18 +177,5 @@ label.form-check-label {
     display: inline-block;
     vertical-align: middle;
 }
-
-/* body {
-  background-color: #e74c3c;
-  animation: bg-color 10s infinite;
-}
-@keyframes bg-color {
-  0% { background-color: #e74c3c; }
-  20% { background-color: #f1c40f; }
-  40% { background-color: #1abc9c; }
-  60% { background-color: #3498db; }
-  80% { background-color: #9b59b6; }
-  100% { background-color: #e74c3c; }
-} */
 
 </style>
