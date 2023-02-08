@@ -40,7 +40,7 @@ export default {
   mounted() {
     axios
       .get(this.endpoint)
-      .then((response) => (this.posts = response.data))
+      .then((response) => (this.posts = response.data.reverse()))
       .catch((error) => console.log(error));
   },
 };

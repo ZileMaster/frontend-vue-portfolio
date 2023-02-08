@@ -1,8 +1,5 @@
 <template>
   <div class="home">
-    <HeroSection class="hero-container">
-      <h1> Home page </h1>
-    </HeroSection>
     <HomePage msg="Welcome to Your Vue.js App" />
   </div>
 </template>

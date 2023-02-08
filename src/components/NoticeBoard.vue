@@ -20,7 +20,7 @@
         mounted() {
             axios
                 .get(this.endpoint)
-                .then((response) => this.notices = response.data)
+                .then((response) => this.notices = response.data.reverse())
                 .catch((error) => console.log(error));
         },
 
