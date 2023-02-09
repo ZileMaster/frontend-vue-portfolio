@@ -3,6 +3,7 @@
         <ul v-for="info in notices" :key="info.id" id="notice-board">
             <li class="notice-header"> {{ info.head }} </li>
             <li class="notice-description"> {{ info.description }} </li>
+            <li v-if="isAdmin"><button @click="deleteNotice(info.id)" >Delete notice</button></li>
         </ul>
     </div>
   </template>
@@ -23,7 +24,21 @@
                 .then((response) => this.notices = response.data.reverse())
                 .catch((error) => console.log(error));
         },
-
+        computed:{
+          isAdmin(){
+            return localStorage.getItem("user-info").admin == null;
+          },
+        },
+        methods: {
+          async deleteNotice(id){
+            const config = {
+              headers: { 'Authorization': `Bearer ${JSON.parse(localStorage.getItem("user-info")).token}` }
+            };
+            axios.delete(`https://frozen-lowlands-12731.herokuapp.com/api/notice_boards/1/infos/${id}`, 
+              config).then((response) => { console.log(response) })
+              .catch((error) => {console.warn(error)});
+          }
+        }
     };
   </script>
   
