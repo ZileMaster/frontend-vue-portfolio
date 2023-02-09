@@ -3,7 +3,9 @@
         <ul v-for="info in notices" :key="info.id" id="notice-board">
             <li class="notice-header"> {{ info.head }} </li>
             <li class="notice-description"> {{ info.description }} </li>
-            <li v-if="isAdmin"><button @click="deleteNotice(info.id)" >Delete notice</button></li>
+            <div v-if="isAdmin">
+              <li><button @click="deleteNotice(info.id)" >Delete notice</button></li>
+            </div>
         </ul>
     </div>
   </template>
@@ -26,7 +28,11 @@
         },
         computed:{
           isAdmin(){
-            return localStorage.getItem("user-info").admin == null;
+            const userInfo = JSON.parse(localStorage.getItem("user-info"));
+            if(userInfo && userInfo.admin)
+              return true;
+            else
+              return false;
           },
         },
         methods: {

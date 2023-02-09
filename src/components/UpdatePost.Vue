@@ -29,12 +29,14 @@
   <script>
   import axios from 'axios';
   export default {
+    props: ["postId"],
     data() {
       return {
         headline: "",
         description: "",
         text: "",
-        selectedTopic: "travel"
+        selectedTopic: "travel", 
+        postId: this.postId
       };
     }, 
     methods: {
@@ -44,7 +46,7 @@
                 headers: { 'Authorization': `Bearer ${this.token}` }
             };
         if(this.selectedTopic === "project"){
-            await axios.put("https://frozen-lowlands-12731.herokuapp.com/api/project_pages", 
+            await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/project_pages/${this.postId}`, 
                 {
                 "post":{
                     "headline": this.headline, 
@@ -62,7 +64,7 @@
             ).catch(error => console.log(error))
         }
         else
-            await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/${this.selectedTopic}_blogs`, 
+            await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/${this.selectedTopic}_blogs/${this.postId}`, 
             {
                 "post":{
                         "headline": this.headline, 

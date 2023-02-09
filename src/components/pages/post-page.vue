@@ -16,7 +16,7 @@
         </div>
         <Modal v-if="modalTriggers.updatePostTrigger" :ToggleModal=" () => ToggleModal('updatePostTrigger')">
               <div class="modal-content">
-                <UpdatePost />
+                <UpdatePost :postId="this.id" />
               </div>
             </Modal>
       </div>
@@ -29,7 +29,7 @@
 
 <script>
   import CommentSection from "@/components/CommentSection.vue";
-  import UpdatePost from "@/components/UpdatePost.vue";
+  import UpdatePost from "../UpdatePost.vue";
 import { ref } from "vue";
 import UpdateUser from "../UpdateUser.vue";
 import Modal from "../Modal.vue";
