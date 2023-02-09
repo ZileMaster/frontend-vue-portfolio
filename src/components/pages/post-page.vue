@@ -11,9 +11,14 @@
           <i class="fa fa-thumbs-up"></i> {{ likes }} Likes
         </div>
         <div v-if="isAdmin" class="buttons-for-admin">  
-          <button class="btn-mod">Modify</button>
+          <button class="btn-mod" @click="() => ToggleModal('updatePostTrigger')">Modify</button>
           <button class="btn-del">Delete</button>
         </div>
+        <Modal v-if="modalTriggers.updatePostTrigger" :ToggleModal=" () => ToggleModal('updatePostTrigger')">
+              <div class="modal-content">
+                <UpdatePost />
+              </div>
+            </Modal>
       </div>
     </div>
     <div class="comment-section">
@@ -24,15 +29,41 @@
 
 <script>
   import CommentSection from "@/components/CommentSection.vue";
+  import UpdatePost from "@/components/UpdatePost.vue";
+import { ref } from "vue";
+import UpdateUser from "../UpdateUser.vue";
+import Modal from "../Modal.vue";
 
 export default {
     props: ["headline", "topic", "likes", "description", "text", "comments"],
+    components: { 
+      CommentSection, 
+      UpdateUser, 
+      Modal, 
+      UpdatePost
+    },
     data() {
         return {
             hoverHeadline: false,
             hoverTopic: false,
             CommentSection
         };
+    },
+    setup(){
+      const modalTriggers = ref({
+        updatePostTrigger: false,
+      })
+
+      const ToggleModal = (trigger) => {
+        modalTriggers.value[trigger] = !modalTriggers.value[trigger]
+      }
+
+      return {
+        Modal, 
+        modalTriggers, 
+        ToggleModal
+      }
+
     },
     methods: {
         headlineHover() {
@@ -63,7 +94,6 @@ export default {
         return userInfo && userInfo.admin !== undefined;
       }
     },
-    components: { CommentSection }
 }
 </script>
 
