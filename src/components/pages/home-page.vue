@@ -38,8 +38,8 @@ export default{
   computed: {
     noticesStyles() {
       return this.showNotices
-        ? { width: "25%", height: "60%", overflow: "scroll" }
-        : { width: "15%", height: "3%" };
+        ? { width: "25%", height: "60%", overflow: "scroll", }
+        : { width: "15%", height: "3%", };
     },
     collapseClass(){
       return this.showNotices 
@@ -90,7 +90,7 @@ body {
 
 @media (max-width: 900px) {
   .notices {
-    width: 50%;
+    min-width: 200px;
   }
 }
 </style>
@@ -102,4 +102,10 @@ body {
   background-size: cover;
 }
 
+@media (max-width: 900px) {
+  .notices {
+    left: 0%;
+    min-width: 300px;
+  }
+}
 </style>
