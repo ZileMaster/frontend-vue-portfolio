@@ -29,7 +29,7 @@
 
 <script>
   import CommentSection from "@/components/CommentSection.vue";
-  import UpdatePost from "../UpdatePost.vue";
+  import UpdatePost from "../UpdatePostAdmin.vue";
 import { ref } from "vue";
 import UpdateUser from "../UpdateUser.vue";
 import Modal from "../Modal.vue";
