@@ -33,6 +33,8 @@
     name: "CommentSection",
     props: {
       comments: Array,
+      topic: String, 
+      id: Number
     },
     data() {
       return {
@@ -55,15 +57,32 @@
 
       return this.usernames[user_id];
     },
-      submitComment() {
+      async submitComment() {
+        
+        if(JSON.parse(localStorage.getItem("user-info")).user != null){
+        this.userId = JSON.parse(localStorage.getItem("user-info")).user.id;
+        this.token = JSON.parse(localStorage.getItem("user-info")).token;
+        }else{
+          alert("You are not loged in!");
+        }
+
+        const config = {
+                headers: { 'Authorization': `Bearer ${this.token}` }
+            };
+
         const comment = {
-          headline: this.headline,
-          description: this.description,
+          komentar:{
+            user_id: this.userId,
+            headline: this.headline,
+            description: this.description,
+            rating: 0, 
+            post_id: this.id,
+          }
         };
-  
-        this.$emit("submit-comment", comment);
-        this.headline = "";
-        this.description = "";
+        console.log(comment);
+        await axios.post(`https://frozen-lowlands-12731.herokuapp.com/api/komentars`, comment, config)
+          .then(response => console.log(response))
+          .catch(error => console.log(error));
       },
     },
     

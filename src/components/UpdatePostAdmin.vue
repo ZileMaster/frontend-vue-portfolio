@@ -45,38 +45,30 @@
             const config = {
                 headers: { 'Authorization': `Bearer ${this.token}` }
             };
+            console.log(this.postId)
+            const body = {
+                post:{
+                        "headline": this.headline, 
+                        "description": this.description, 
+                        "project_page_id": 2,
+                        "travel_blog_id": 2, 
+                        "personal_blog_id": 2,
+                        "likes": 0, 
+                        "topic": this.selectedTopic,
+                        "text": this.text,
+                    } 
+                }
+                console.log(body)
         if(this.selectedTopic === "project"){
             await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/project_pages/${this.postId}`, 
-                {
-                "post":{
-                    "headline": this.headline, 
-                    "description": this.description, 
-                    "text": this.text,
-                    "project_page_id": 2,
-                    "travel_blog_id": 2, 
-                    "personal_blog_id": 2,
-                    "likes": 0, 
-                    "topic": "project"
-                } 
-                }, 
+                body, 
                 config
             ).then( response => console.log(response)
             ).catch(error => console.log(error))
         }
         else
             await axios.put(`https://frozen-lowlands-12731.herokuapp.com/api/${this.selectedTopic}_blogs/${this.postId}`, 
-            {
-                "post":{
-                        "headline": this.headline, 
-                        "description": this.description, 
-                        "text": this.text,
-                        "project_page_id": 2,
-                        "travel_blog_id": 2, 
-                        "personal_blog_id": 2,
-                        "likes": 0, 
-                        "topic": this.selectedTopic
-                    } 
-                }, 
+                body, 
                 config
             ).then( response => console.log(response)
             ).catch(error => console.log(error))

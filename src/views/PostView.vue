@@ -2,6 +2,7 @@
   <div class="home">
     <PostPage 
       v-if="post"
+      :id="this.id"
       :headline="post.post.headline" 
       :description="post.post.description" 
       :likes="post.post.likes" 

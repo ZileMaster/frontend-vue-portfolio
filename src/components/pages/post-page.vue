@@ -12,17 +12,17 @@
         </div>
         <div v-if="isAdmin" class="buttons-for-admin">  
           <button class="btn-mod" @click="() => ToggleModal('updatePostTrigger')">Modify</button>
-          <button class="btn-del">Delete</button>
+          <button class="btn-del" @click="deletePost(id)">Delete</button>
         </div>
         <Modal v-if="modalTriggers.updatePostTrigger" :ToggleModal=" () => ToggleModal('updatePostTrigger')">
               <div class="modal-content">
-                <UpdatePost :postId="this.id" />
+                <UpdatePost :postId="id" />
               </div>
             </Modal>
       </div>
     </div>
     <div class="comment-section">
-      <CommentSection :comments="comments"/> 
+      <CommentSection :comments="comments" :id="id" :topic="topic"/> 
     </div>
   </div>
 </template>
@@ -33,9 +33,10 @@
 import { ref } from "vue";
 import UpdateUser from "../UpdateUser.vue";
 import Modal from "../Modal.vue";
+import axios from "axios";
 
 export default {
-    props: ["headline", "topic", "likes", "description", "text", "comments"],
+    props: ["headline", "topic", "likes", "description", "text", "comments", "id"],
     components: { 
       CommentSection, 
       UpdateUser, 
@@ -87,10 +88,35 @@ export default {
                 }, 500);
             }
         },
+        deletePost(id){
+          this.token = JSON.parse(localStorage.getItem("user-info")).token;
+          const config = {
+            headers: { 'Authorization': `Bearer ${this.token}` }
+          };
+
+          if(this.topic == "project"){
+            axios.delete(`https://frozen-lowlands-12731.herokuapp.com/api/project_pages/${id}`, config)
+              .then((response) => 
+                {
+                  console.log(response) 
+                  this.$router.push({name: "home"}); 
+                })
+              .catch((error) => console.log(error));
+          }else{
+            axios.delete(`https://frozen-lowlands-12731.herokuapp.com/api/${this.topic}_blogs/${id}`, config)
+              .then((response) => 
+                {
+                  console.log(response) 
+                  this.$router.push({name: "home"}); 
+                })
+              .catch((error) => console.log(error));
+          }
+        }
     },
     computed: {
       isAdmin() {
         const userInfo = JSON.parse(localStorage.getItem("user-info"));
+        console.log(this.id);
         return userInfo && userInfo.admin !== undefined;
       }
     },
