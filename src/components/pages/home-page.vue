@@ -23,7 +23,7 @@
     </transition>
     <div class="home-content">
       <div>
-        <p> This page has </p>
+        <p> This site has </p>
         <h1 id="count">0</h1>
         <p>Views</p>
       </div>

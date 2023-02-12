@@ -4,7 +4,7 @@
       <div class="post-container">
         <h2 class="post-headline" @mouseover="headlineHover" @mouseleave="headlineLeave">{{ headline }}</h2>
         <p class="post-topic" :class="{ 'hover': hoverTopic }" @mouseover="topicHover" @mouseleave="topicLeave">Topic: {{ topic }}</p>
-        <p class="post-description">{{ text }}</p>
+        <p class="post-description" v-html="text"></p>
       </div>
       <div class="post-actions">
         <div class="post-likes" @click="animateLike">

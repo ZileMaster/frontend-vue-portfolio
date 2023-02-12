@@ -17,7 +17,7 @@
         <div class="comment" v-for="comment in comments" :key="comment.id">
             <h4 class="comment-head">{{ comment.headline }}</h4>
             <p class="comment-desc">{{ comment.description }}</p>
-            <p class="author">~ by {{ getUsername(comment.user_id) }}</p>
+            <p class="author" id="comUser">~ by {{ getUsername(comment.user_id) }}</p>
         </div>
       </div>
       <div v-else>
@@ -46,16 +46,18 @@
     },
     methods: {
         async getUsername(user_id){
-            if (!this.usernames[user_id]) {
-            await axios
-          .get(`https://frozen-lowlands-12731.herokuapp.com/api/user/${user_id}`)
-          .then((response) => {
-            this.usernames[user_id] = response.data.user.username;
-          })
-          .catch((error) => console.error(error));
+          if (!this.usernames[user_id]) {
+            
+            let username = await axios
+              .get(`https://frozen-lowlands-12731.herokuapp.com/api/user/${user_id}`)
+              .then((response) => response.data.user.username)
+              .catch((error) => console.error(error));
+            console.log(user_id, username);
+            return username.toString();
       }
+      console.log(this.usernames)
 
-      return this.usernames[user_id];
+      return username;
     },
       async submitComment() {
         

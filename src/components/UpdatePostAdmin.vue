@@ -50,9 +50,9 @@
                 post:{
                         "headline": this.headline, 
                         "description": this.description, 
-                        "project_page_id": 2,
-                        "travel_blog_id": 2, 
-                        "personal_blog_id": 2,
+                        "project_page_id": 1,
+                        "travel_blog_id": 1, 
+                        "personal_blog_id": 1,
                         "likes": 0, 
                         "topic": this.selectedTopic,
                         "text": this.text,
