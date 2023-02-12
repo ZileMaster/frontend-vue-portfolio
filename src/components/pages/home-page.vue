@@ -21,12 +21,21 @@
           </div>
         </div>
     </transition>
+    <div class="home-content">
+      <div>
+        <p> This page has </p>
+        <h1 id="count">0</h1>
+        <p>Views</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import HeroSection from "../HeroSection.vue";
 import NoticeBoard from "../NoticeBoard.vue"; 
+
+
 
 export default{
   components: { NoticeBoard, HeroSection },
@@ -48,6 +57,10 @@ export default{
     }
   },
   mounted(){ 
+    const countEl = document.getElementById('count');
+
+    this.updateVisitCount(countEl);
+
     if (!localStorage.getItem("visited")){
       alert("Please have understanding that this site is still not the endproduct and it is limited, over time it will be getting more and more stuff. Thank you for your attention!");
       localStorage.setItem("visited", true);
@@ -56,6 +69,13 @@ export default{
   methods: {
     toggleNotices(){ 
       this.showNotices = !this.showNotices;
+    }, 
+    updateVisitCount(countEl){
+      fetch('https://api.countapi.xyz/update/rails-front/viewforfront/?amount=1')
+        .then(res => res.json())
+        .then(res => {
+          countEl.innerHTML = res.value;
+        })
     }
   }
 };
@@ -108,4 +128,17 @@ body {
     min-width: 300px;
   }
 }
+
+h1 {
+	font-size: 50px;
+	margin: 0;
+}
+
+p {
+	color: rgba(54, 46, 126, 0.8);
+	letter-spacing: 2px;
+	margin: 0;
+  font-size: 25px;
+}
+
 </style>
