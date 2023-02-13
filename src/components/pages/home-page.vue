@@ -27,10 +27,13 @@
         <h1 id="count">0</h1>
         <p>Views</p>
       </div>
-      <div class="cards">
-        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/project_pages" />
-        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/travel_blogs" />
-        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/personal_blogs" />
+      <div>
+        <h1>These are the latest posts by every topic</h1>
+        <div class="home-cards">
+          <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/project_pages" />
+          <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/travel_blogs" />
+          <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/personal_blogs" />
+        </div>
       </div>
     </div>
   </div>
@@ -148,6 +151,33 @@ p {
 	letter-spacing: 2px;
 	margin: 0;
   font-size: 25px;
+}
+
+.home-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-cards > * {
+  flex: 1 1 33%;
+  margin: 10px;
+}
+
+.home-cards > :first-child {
+  order: -1;
+}
+
+@media (max-width: 995px) {
+  .home-cards {
+    flex-direction: column;
+  }
+}
+
+.home-content{
+  display: flex;
+  flex-direction: column;
+  gap: -10px;
+  column-gap: 15px;
 }
 
 </style>
