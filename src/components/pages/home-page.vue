@@ -94,11 +94,15 @@ body {
   left: 75%;
   transition: width 0.3s, height 0.3s;
   background-color: bisque;
+  border-top-left-radius: 4%;
+  border-top-right-radius: 4%;
 }
 
 .notices > .noticesButton{
   background-color: crimson;
-  color: antiquewhite
+  color: antiquewhite;
+  border-top-left-radius: 8%;
+  border-top-right-radius: 8%;
 }
 
 .collapse-icon {

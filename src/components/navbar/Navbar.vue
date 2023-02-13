@@ -1,4 +1,5 @@
 <template>
+  <div class="main-all">
      <ul class="menu">
       <div
         class="menu-indicator"
@@ -34,7 +35,8 @@
         </SideBarLink></li>
     </div>
     </ul>
-  </template>
+  </div>
+</template>
 
 <script>
 import SideBarLink from '../sidebar/side-bar-link.vue';
@@ -77,6 +79,10 @@ export default{
 </script>
 
 <style>
+.main-all{
+  position:fixed;
+  width: 100vh;
+}
 
 :root {
   --active-color: #ffee93;
