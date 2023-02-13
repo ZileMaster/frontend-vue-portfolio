@@ -27,6 +27,11 @@
         <h1 id="count">0</h1>
         <p>Views</p>
       </div>
+      <div class="cards">
+        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/project_pages" />
+        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/travel_blogs" />
+        <Post endpoint="https://frozen-lowlands-12731.herokuapp.com/api/personal_blogs" />
+      </div>
     </div>
   </div>
 </template>
@@ -34,11 +39,11 @@
 <script>
 import HeroSection from "../HeroSection.vue";
 import NoticeBoard from "../NoticeBoard.vue"; 
-
+import Post from "../LatestPosts.vue";
 
 
 export default{
-  components: { NoticeBoard, HeroSection },
+  components: { NoticeBoard, HeroSection, Post },
   data(){
     return{
       showNotices: false,
