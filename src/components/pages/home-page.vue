@@ -167,7 +167,7 @@ p {
   order: -1;
 }
 
-@media (max-width: 995px) {
+@media (max-width: 995px){
   .home-cards {
     flex-direction: column;
   }
